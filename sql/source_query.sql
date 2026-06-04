@@ -10,6 +10,7 @@ SELECT
     geo.EnglishCountryRegionName,
     sales.ProductKey,
     sales.OrderDateKey,
+    sales.OrderDate,
     sales.SalesOrderNumber,
     sales.SalesOrderLineNumber,
     sales.OrderQuantity,
@@ -17,7 +18,7 @@ SELECT
     sales.SalesAmount,
     prod.EnglishProductName,
     prod.Color,
-    prod.ListPrice,
+    
     prod.ModelName
 
   FROM [AdventureWorksDW2025].[dbo].[FactResellerSales] sales
