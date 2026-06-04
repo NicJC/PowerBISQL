@@ -1,0 +1,226 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "32650fd072ed9a001ad0",
+  "position": {
+    "x": 329.69072164948454,
+    "y": 89.69072164948453,
+    "z": 0,
+    "height": 280.20618556701032,
+    "width": 822.06185567010311,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Query"
+                        }
+                      },
+                      "Property": "CustomerKey"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(Query.CustomerKey)",
+              "nativeQueryRef": "Count of CustomerKey"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Query"
+                    }
+                  },
+                  "Property": "FirstName"
+                }
+              },
+              "queryRef": "Query.FirstName",
+              "nativeQueryRef": "FirstName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Query"
+                    }
+                  },
+                  "Property": "LastName"
+                }
+              },
+              "queryRef": "Query.LastName",
+              "nativeQueryRef": "LastName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Query"
+                    }
+                  },
+                  "Property": "ModelName"
+                }
+              },
+              "queryRef": "Query.ModelName",
+              "nativeQueryRef": "ModelName"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Query"
+                        }
+                      },
+                      "Property": "UnitPrice"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Query.UnitPrice)",
+              "nativeQueryRef": "Sum of UnitPrice"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Query"
+                        }
+                      },
+                      "Property": "OrderQuantity"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Query.OrderQuantity)",
+              "nativeQueryRef": "Sum of OrderQuantity"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "3167035f044bce8b2006",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Query"
+                  }
+                },
+                "Property": "CustomerKey"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "67e9be05a226a0848ac6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Query"
+              }
+            },
+            "Property": "FirstName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "359f6024c8b9203050a5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Query"
+              }
+            },
+            "Property": "LastName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d6a14d254d21b33c7531",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Query"
+              }
+            },
+            "Property": "ModelName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c98c27db26a4192717ca",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Query"
+                  }
+                },
+                "Property": "UnitPrice"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ea970017a2c2600642dc",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Query"
+                  }
+                },
+                "Property": "OrderQuantity"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -1,0 +1,187 @@
+table Query
+	lineageTag: 61f7defb-2194-4c97-a5ac-a2d87696a855
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 4200c32b-0f45-49fc-a91e-8934f4fbf29a
+		summarizeBy: count
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		lineageTag: 82b47de4-d4ef-4c82-b881-8481bfeec6bd
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: 7c1cbed3-1327-4839-a938-dffa3abcfe8e
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailAddress
+		dataType: string
+		lineageTag: 32cf199d-d66e-4d08-a4db-164317ab3823
+		summarizeBy: none
+		sourceColumn: EmailAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResellerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 981e8007-0302-476d-b454-aeddd23d1f2b
+		summarizeBy: count
+		sourceColumn: ResellerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResellerName
+		dataType: string
+		lineageTag: dab53d67-ecdd-4b3b-8051-358b4d1483ad
+		summarizeBy: none
+		sourceColumn: ResellerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 9bb59bfe-74a7-40bb-880f-ce477858df97
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column StateProvinceName
+		dataType: string
+		lineageTag: 315456c3-3dfe-4505-a752-0dbf6c603907
+		summarizeBy: none
+		sourceColumn: StateProvinceName
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnglishCountryRegionName
+		dataType: string
+		lineageTag: 8e7a03f0-3127-489f-8d86-b7ef2defde72
+		summarizeBy: none
+		sourceColumn: EnglishCountryRegionName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 023f3fe4-8695-4d54-9ebe-b884c80d168e
+		summarizeBy: count
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 8be96f63-b047-4840-a831-ebc06aa93aed
+		summarizeBy: count
+		sourceColumn: OrderDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderNumber
+		dataType: string
+		lineageTag: e0ca84a3-7694-460a-a3cf-e2e8d95c09af
+		summarizeBy: none
+		sourceColumn: SalesOrderNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderLineNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: f3620022-1c98-481c-8752-79822f818d53
+		summarizeBy: sum
+		sourceColumn: SalesOrderLineNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderQuantity
+		dataType: int64
+		formatString: 0
+		lineageTag: cf4631f1-8381-48ac-bea0-d917ba0de48b
+		summarizeBy: sum
+		sourceColumn: OrderQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		lineageTag: 03cc5453-4b1d-4f0b-88de-c734e3135a71
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SalesAmount
+		dataType: double
+		lineageTag: a71e6935-a368-42e3-adb0-f82ee175625f
+		summarizeBy: sum
+		sourceColumn: SalesAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EnglishProductName
+		dataType: string
+		lineageTag: 417e84f4-894b-49b0-9992-8e6c74ce059c
+		summarizeBy: none
+		sourceColumn: EnglishProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		dataType: string
+		lineageTag: 5bbcb042-b4cd-4be7-bbdf-5c4798266be9
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column ListPrice
+		dataType: double
+		lineageTag: a65f628d-f9b8-42fc-b7e5-4b70c121da0c
+		summarizeBy: sum
+		sourceColumn: ListPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ModelName
+		dataType: string
+		lineageTag: b43be266-e80f-4b0f-a706-03202ab39fbe
+		summarizeBy: none
+		sourceColumn: ModelName
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Query = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database(".\SQLEXPRESS", "AdventureWorksDW2025", [Query = "SELECT#(lf)    cust.CustomerKey,#(lf)    cust.FirstName,#(lf)    cust.LastName,#(lf)    cust.EmailAddress,#(lf)    res.ResellerKey,#(lf)    res.ResellerName,#(lf)    geo.City,#(lf)    geo.StateProvinceName,#(lf)    geo.EnglishCountryRegionName,#(lf)    sales.ProductKey,#(lf)    sales.OrderDateKey,#(lf)    sales.SalesOrderNumber,#(lf)    sales.SalesOrderLineNumber,#(lf)    sales.OrderQuantity,#(lf)    sales.UnitPrice,#(lf)    sales.SalesAmount,#(lf)    prod.EnglishProductName,#(lf)    prod.Color,#(lf)    prod.ListPrice,#(lf)    prod.ModelName#(lf)#(lf)  FROM [AdventureWorksDW2025].[dbo].[FactResellerSales] sales#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimProduct] prod#(lf)#(lf)  ON prod.ProductKey = sales.ProductKey#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[FactInternetSales] fs#(lf)#(lf)  ON fs.ProductKey = sales.ProductKey#(lf)  #(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimCustomer] cust#(lf)#(lf)  ON cust.CustomerKey = fs.CustomerKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimGeography] geo#(lf)#(lf)  ON cust.GeographyKey = geo.GeographyKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimReseller] res#(lf)#(lf)  ON res.ResellerKey = sales.ResellerKey #(lf)  #(lf)  ;#(lf)  "])
+				in
+				  Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
