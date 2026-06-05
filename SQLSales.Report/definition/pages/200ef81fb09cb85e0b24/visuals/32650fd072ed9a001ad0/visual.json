@@ -2,15 +2,15 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "32650fd072ed9a001ad0",
   "position": {
-    "x": 109.48453608247422,
-    "y": 39.587628865979383,
+    "x": 103.91752577319588,
+    "y": 40.824742268041234,
     "z": 0,
-    "height": 585.7731958762887,
-    "width": 736.08247422680415,
+    "height": 617.93814432989689,
+    "width": 878.96907216494844,
     "tabOrder": 0
   },
   "visual": {
-    "visualType": "scatterChart",
+    "visualType": "hundredPercentStackedBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,80 +20,33 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Query"
+                      "Entity": "Product"
                     }
                   },
-                  "Property": "FirstName"
+                  "Property": "EnglishProductName"
                 }
               },
-              "queryRef": "Query.FirstName",
-              "nativeQueryRef": "FirstName",
+              "queryRef": "Product.EnglishProductName",
+              "nativeQueryRef": "EnglishProductName",
               "active": true
             }
           ]
         },
-        "Series": {
+        "Rows": {
           "projections": [
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Query"
+                      "Entity": "Product"
                     }
                   },
                   "Property": "ModelName"
                 }
               },
-              "queryRef": "Query.ModelName",
+              "queryRef": "Product.ModelName",
               "nativeQueryRef": "ModelName"
-            }
-          ]
-        },
-        "Size": {
-          "projections": [
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Query"
-                        }
-                      },
-                      "Property": "OrderQuantity"
-                    }
-                  },
-                  "Function": 0
-                }
-              },
-              "queryRef": "Sum(Query.OrderQuantity)",
-              "nativeQueryRef": "Sum of OrderQuantity"
-            }
-          ]
-        },
-        "X": {
-          "projections": [
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Query"
-                        }
-                      },
-                      "Property": "OrderDateKey"
-                    }
-                  },
-                  "Function": 5
-                }
-              },
-              "queryRef": "CountNonNull(Query.OrderDateKey)",
-              "nativeQueryRef": "Count of OrderDateKey",
-              "active": true
             }
           ]
         },
@@ -106,17 +59,36 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Query"
+                          "Entity": "OrderFacts"
                         }
                       },
-                      "Property": "UnitPrice"
+                      "Property": "SalesAmount"
                     }
                   },
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(Query.UnitPrice)",
-              "nativeQueryRef": "Sum of UnitPrice"
+              "queryRef": "Sum(OrderFacts.SalesAmount)",
+              "nativeQueryRef": "Sum of SalesAmount"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "OrderFacts"
+                        }
+                      },
+                      "Property": "OrderQuantity"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(OrderFacts.OrderQuantity)",
+              "nativeQueryRef": "Sum of OrderQuantity1"
             }
           ]
         }
@@ -127,31 +99,31 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "11c214e088b2e79acd04",
+        "name": "00b848dfaea4d0d8b00d",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Query"
+                "Entity": "Product"
               }
             },
-            "Property": "FirstName"
+            "Property": "EnglishProductName"
           }
         },
         "type": "Categorical"
       },
       {
-        "name": "8cdd345b09a13810346e",
+        "name": "74baf0f89438b844dd8b",
         "field": {
           "Aggregation": {
             "Expression": {
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Query"
+                    "Entity": "OrderFacts"
                   }
                 },
-                "Property": "UnitPrice"
+                "Property": "SalesAmount"
               }
             },
             "Function": 0
@@ -160,14 +132,14 @@
         "type": "Advanced"
       },
       {
-        "name": "666775ec0579a77eed38",
+        "name": "dfb8358cb2660abb6c06",
         "field": {
           "Aggregation": {
             "Expression": {
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Query"
+                    "Entity": "OrderFacts"
                   }
                 },
                 "Property": "OrderQuantity"
@@ -179,37 +151,18 @@
         "type": "Advanced"
       },
       {
-        "name": "33fffbdd5eccba40a8d3",
+        "name": "db083518b5d823a493a9",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Query"
+                "Entity": "Product"
               }
             },
             "Property": "ModelName"
           }
         },
         "type": "Categorical"
-      },
-      {
-        "name": "0f10e4c180a0a1650043",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Query"
-                  }
-                },
-                "Property": "OrderDateKey"
-              }
-            },
-            "Function": 5
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

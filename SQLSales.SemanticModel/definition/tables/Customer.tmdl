@@ -1,0 +1,49 @@
+table Customer
+	lineageTag: 61f7defb-2194-4c97-a5ac-a2d87696a855
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 4200c32b-0f45-49fc-a91e-8934f4fbf29a
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstName
+		dataType: string
+		lineageTag: 82b47de4-d4ef-4c82-b881-8481bfeec6bd
+		summarizeBy: none
+		sourceColumn: FirstName
+
+		annotation SummarizationSetBy = Automatic
+
+	column LastName
+		dataType: string
+		lineageTag: 7c1cbed3-1327-4839-a938-dffa3abcfe8e
+		summarizeBy: none
+		sourceColumn: LastName
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailAddress
+		dataType: string
+		lineageTag: 32cf199d-d66e-4d08-a4db-164317ab3823
+		summarizeBy: none
+		sourceColumn: EmailAddress
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Customer = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database(".\SQLEXPRESS", "AdventureWorksDW2025", [Query="SELECT#(lf)    cust.CustomerKey,#(lf)    cust.FirstName,#(lf)    cust.LastName,#(lf)    cust.EmailAddress  #(lf)#(lf)FROM [AdventureWorksDW2025].[dbo].[FactResellerSales] sales#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimProduct] prod#(lf)#(lf)  ON prod.ProductKey = sales.ProductKey#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[FactInternetSales] fs#(lf)#(lf)  ON fs.ProductKey = sales.ProductKey#(lf)  #(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimCustomer] cust#(lf)#(lf)  ON cust.CustomerKey = fs.CustomerKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimGeography] geo#(lf)#(lf)  ON cust.GeographyKey = geo.GeographyKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimReseller] res#(lf)#(lf)  ON res.ResellerKey = sales.ResellerKey #(lf)  #(lf)  ;#(lf)  "]),
+				   Distinct = Table.Distinct(Source)
+				in
+				    Distinct
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

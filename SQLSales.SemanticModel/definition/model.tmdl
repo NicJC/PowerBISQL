@@ -8,11 +8,18 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["Query"]
+annotation PBI_QueryOrder = ["Customer","Product","Region","Reseller","OrderFacts"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table Query
+ref table Customer
+ref table DateTableTemplate_dd2a53fc-75d4-4417-a3a4-80c3b6d266a0
+ref table Product
+ref table Region
+ref table OrderFacts
+ref table Reseller
+ref table DimDate
+ref table LocalDateTable_9f087059-6dd8-4d63-a3b8-32eeac271a66
 
 ref cultureInfo en-NZ
 

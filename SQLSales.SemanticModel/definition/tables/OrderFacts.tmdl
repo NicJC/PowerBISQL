@@ -1,0 +1,116 @@
+table OrderFacts
+	lineageTag: ae9de9f8-3d8c-4421-93c7-6c32bb8a6a0e
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: f94ef136-0938-4b71-847e-ec6862f6673e
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 49f479f0-1463-4209-b4ff-cd5123fc6b25
+		summarizeBy: count
+		sourceColumn: OrderDateKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9ff96b66-88fe-42df-872c-8ca5439780af
+		summarizeBy: none
+		sourceColumn: OrderDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderNumber
+		dataType: string
+		lineageTag: a4e64cc8-7daa-4f72-9982-53f3de4ca10b
+		summarizeBy: none
+		sourceColumn: SalesOrderNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderLineNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: dd6e4464-0d85-4473-9d65-c11e074fea88
+		summarizeBy: sum
+		sourceColumn: SalesOrderLineNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderQuantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 4ed99e8a-3d2a-4da0-a2ff-884f70846218
+		summarizeBy: sum
+		sourceColumn: OrderQuantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnitPrice
+		dataType: double
+		lineageTag: 53ac0eb2-d9d7-451f-9ce4-cc9525c22f8b
+		summarizeBy: sum
+		sourceColumn: UnitPrice
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SalesAmount
+		dataType: double
+		lineageTag: 8952d43e-fdb2-4297-86a5-6c306a944988
+		summarizeBy: sum
+		sourceColumn: SalesAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ResellerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: a8623832-5843-4e4f-8d37-ce7950df48ed
+		summarizeBy: count
+		sourceColumn: ResellerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e7ea7b6-f57d-4186-86b9-20d365a25745
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeographyKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a1be37b-f19a-40a8-9ea0-69e87295aa76
+		summarizeBy: none
+		sourceColumn: GeographyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition OrderFacts = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database(".\SQLEXPRESS", "AdventureWorksDW2025", [Query="SELECT#(lf)    cust.CustomerKey,#(lf)    cust.FirstName,#(lf)    cust.LastName,#(lf)    cust.EmailAddress,#(lf)    res.ResellerKey,#(lf)    res.ResellerName,#(lf)    geo.GeographyKey,#(lf)    geo.City,#(lf)    geo.StateProvinceName,#(lf)    geo.EnglishCountryRegionName,#(lf)    sales.ProductKey,#(lf)    sales.OrderDateKey,#(lf)    sales.OrderDate,#(lf)    sales.SalesOrderNumber,#(lf)    sales.SalesOrderLineNumber,#(lf)    sales.OrderQuantity,#(lf)    sales.UnitPrice,#(lf)    sales.SalesAmount,#(lf)    prod.EnglishProductName,#(lf)    prod.Color,#(lf)    #(lf)    prod.ModelName#(lf)#(lf)  FROM [AdventureWorksDW2025].[dbo].[FactResellerSales] sales#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimProduct] prod#(lf)#(lf)  ON prod.ProductKey = sales.ProductKey#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[FactInternetSales] fs#(lf)#(lf)  ON fs.ProductKey = sales.ProductKey#(lf)  #(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimCustomer] cust#(lf)#(lf)  ON cust.CustomerKey = fs.CustomerKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimGeography] geo#(lf)#(lf)  ON cust.GeographyKey = geo.GeographyKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimReseller] res#(lf)#(lf)  ON res.ResellerKey = sales.ResellerKey #(lf)  #(lf)  ;"]),
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"CustomerKey", "ResellerKey", "GeographyKey", "ProductKey", "OrderDateKey", "OrderDate", "SalesOrderNumber", "SalesOrderLineNumber", "OrderQuantity", "UnitPrice", "SalesAmount"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,41 @@
+table Reseller
+	lineageTag: 6fc62a70-7cd4-4554-af4a-682eaf4b34b1
+
+	column ResellerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 44c57227-a161-4fbb-8bce-05d6cc715fbc
+		summarizeBy: none
+		sourceColumn: ResellerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ResellerName
+		dataType: string
+		lineageTag: ad9a8dc2-eb2d-4be6-a494-0e28754b38eb
+		summarizeBy: none
+		sourceColumn: ResellerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesOrderNumber
+		dataType: string
+		lineageTag: 09fd8971-71e4-422f-a1bc-e49d0e4edfd7
+		summarizeBy: none
+		sourceColumn: SalesOrderNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Reseller = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database(".\SQLEXPRESS", "AdventureWorksDW2025", [Query="SELECT#(lf)    res.ResellerKey,#(lf)    res.ResellerName,#(lf)    sales.SalesOrderNumber#(lf)#(lf)  FROM [AdventureWorksDW2025].[dbo].[FactResellerSales] sales#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimProduct] prod#(lf)#(lf)  ON prod.ProductKey = sales.ProductKey#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[FactInternetSales] fs#(lf)#(lf)  ON fs.ProductKey = sales.ProductKey#(lf)  #(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimCustomer] cust#(lf)#(lf)  ON cust.CustomerKey = fs.CustomerKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimGeography] geo#(lf)#(lf)  ON cust.GeographyKey = geo.GeographyKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimReseller] res#(lf)#(lf)  ON res.ResellerKey = sales.ResellerKey #(lf)  #(lf)  ;"]),
+				    Distinct = Table.Distinct(Source)
+				in
+				    Distinct
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,25 @@
+relationship 1931d92b-1f06-0035-6253-c477d13c6fad
+	fromColumn: OrderFacts.CustomerKey
+	toColumn: Customer.CustomerKey
+
+relationship AutoDetected_b73d1890-654f-49d1-a606-b3d7064d3fdd
+	fromColumn: OrderFacts.SalesOrderNumber
+	toColumn: Reseller.SalesOrderNumber
+
+relationship 0813a50e-c0c4-2a8c-896c-94107d89951a
+	fromColumn: OrderFacts.ProductKey
+	toColumn: Product.ProductKey
+
+relationship 9f4908fb-8329-4638-ec9f-049adaca1799
+	fromColumn: OrderFacts.GeographyKey
+	toColumn: Region.GeographyKey
+
+relationship e50a88f7-6953-4a3f-ae7b-1dd6e0fd8a35
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimDate.Date
+	toColumn: LocalDateTable_9f087059-6dd8-4d63-a3b8-32eeac271a66.Date
+
+relationship 8a6b092b-c1a7-b5cc-0a11-e4d9a52e1494
+	fromColumn: OrderFacts.OrderDate
+	toColumn: DimDate.Date
+

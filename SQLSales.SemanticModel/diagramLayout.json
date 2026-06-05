@@ -10,13 +10,78 @@
       "nodes": [
         {
           "location": {
-            "x": 0,
-            "y": 0
+            "x": 264,
+            "y": 516
           },
-          "nodeIndex": "Query",
+          "nodeIndex": "Customer",
           "nodeLineageTag": "61f7defb-2194-4c97-a5ac-a2d87696a855",
           "size": {
-            "height": 650,
+            "height": 253,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1286,
+            "y": 116
+          },
+          "nodeIndex": "Product",
+          "nodeLineageTag": "8971329a-2c3a-4775-a31b-82bd697c1e6e",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 286,
+            "y": 15
+          },
+          "nodeIndex": "Region",
+          "nodeLineageTag": "0f5a99e4-125d-4c9b-a537-c1aedbdfb7a7",
+          "size": {
+            "height": 245,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 932,
+            "y": 352
+          },
+          "nodeIndex": "OrderFacts",
+          "nodeLineageTag": "ae9de9f8-3d8c-4421-93c7-6c32bb8a6a0e",
+          "size": {
+            "height": 424,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1566,
+            "y": 313
+          },
+          "nodeIndex": "Reseller",
+          "nodeLineageTag": "6fc62a70-7cd4-4554-af4a-682eaf4b34b1",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 828,
+            "y": 34
+          },
+          "nodeIndex": "DimDate",
+          "nodeLineageTag": "cf729a45-f86e-416b-bd0a-e51e18460f09",
+          "size": {
+            "height": 200,
             "width": 234
           },
           "zIndex": 0

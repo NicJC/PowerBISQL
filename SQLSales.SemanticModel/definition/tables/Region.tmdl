@@ -1,0 +1,49 @@
+table Region
+	lineageTag: 0f5a99e4-125d-4c9b-a537-c1aedbdfb7a7
+
+	column City
+		dataType: string
+		lineageTag: 293b1d41-d04c-4ab3-a01a-34ad4740e5a9
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column StateProvinceName
+		dataType: string
+		lineageTag: aac7a760-89c0-4146-bb99-7583b9edf78c
+		summarizeBy: none
+		sourceColumn: StateProvinceName
+
+		annotation SummarizationSetBy = Automatic
+
+	column EnglishCountryRegionName
+		dataType: string
+		lineageTag: 317bbcf9-db7d-455b-811f-6f2f49b446e8
+		summarizeBy: none
+		sourceColumn: EnglishCountryRegionName
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeographyKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 203e9c0c-9827-4a38-9d41-cbc3c60b17c9
+		summarizeBy: none
+		sourceColumn: GeographyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Region = m
+		mode: import
+		source =
+				let
+				  Source = Sql.Database(".\SQLEXPRESS", "AdventureWorksDW2025", [Query="SELECT#(lf)    #(lf)    geo.GeographyKey,#(lf)    geo.City,#(lf)    geo.StateProvinceName,#(lf)    geo.EnglishCountryRegionName#(lf)    #(lf)  FROM [AdventureWorksDW2025].[dbo].[FactResellerSales] sales#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimProduct] prod#(lf)#(lf)  ON prod.ProductKey = sales.ProductKey#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[FactInternetSales] fs#(lf)#(lf)  ON fs.ProductKey = sales.ProductKey#(lf)  #(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimCustomer] cust#(lf)#(lf)  ON cust.CustomerKey = fs.CustomerKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimGeography] geo#(lf)#(lf)  ON cust.GeographyKey = geo.GeographyKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimReseller] res#(lf)#(lf)  ON res.ResellerKey = sales.ResellerKey #(lf)  #(lf)  ;"]),
+				    Distinct = Table.Distinct(Source)
+				in
+				    Distinct
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
