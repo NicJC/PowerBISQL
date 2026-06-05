@@ -2,18 +2,54 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
   "name": "26b9ed9f3c1da0960b65",
   "position": {
-    "x": 139.79381443298968,
-    "y": 72.371134020618555,
+    "x": 24.742268041237114,
+    "y": 21.649484536082475,
     "z": 0,
-    "height": 280.20618556701032,
-    "width": 280.20618556701032,
+    "height": 610.51546391752572,
+    "width": 956.28865979381442,
     "tabOrder": 0
   },
   "visual": {
     "visualType": "scatterChart",
     "query": {
       "queryState": {
-        "Category": {
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product"
+                    }
+                  },
+                  "Property": "ProductName"
+                }
+              },
+              "queryRef": "Product.ProductName",
+              "nativeQueryRef": "ProductName"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MeasureTbl"
+                    }
+                  },
+                  "Property": "Unit Price"
+                }
+              },
+              "queryRef": "MeasureTbl.Unit Price",
+              "nativeQueryRef": "Unit Price"
+            }
+          ]
+        },
+        "X": {
           "projections": [
             {
               "field": {
@@ -31,15 +67,74 @@
               "active": true
             }
           ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrderFacts"
+                    }
+                  },
+                  "Property": "SalesAmount"
+                }
+              },
+              "queryRef": "OrderFacts.SalesAmount",
+              "nativeQueryRef": "SalesAmount"
+            }
+          ]
         }
       }
+    },
+    "objects": {
+      "zoom": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "markers": [
+        {
+          "properties": {
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "73D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryLabels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {
     "filters": [
       {
-        "name": "fc6db6ec61386ac6831a",
+        "name": "b334a34281478da893d5",
         "field": {
           "Column": {
             "Expression": {
@@ -51,6 +146,64 @@
           }
         },
         "type": "Advanced"
+      },
+      {
+        "name": "7c8413c07d37ce21c7b7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "OrderFacts"
+              }
+            },
+            "Property": "SalesAmount"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9e1d7c868a3d5d89a995",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MeasureTbl"
+              }
+            },
+            "Property": "Unit Price"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "668d76be4120e0262dc3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Product"
+              }
+            },
+            "Property": "ProductName"
+          }
+        },
+        "type": "Categorical",
+        "isLockedInViewMode": true,
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
       }
     ]
   }
