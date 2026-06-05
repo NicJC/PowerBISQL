@@ -25,12 +25,48 @@ table Region
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"Region","TableItemName":"Countries above 2M Sales","ObjectType":4},"LinkType":"UsedInGroup"}]
+
 	column GeographyKey
 		dataType: int64
 		formatString: 0
 		lineageTag: 203e9c0c-9827-4a38-9d41-cbc3c60b17c9
 		summarizeBy: none
 		sourceColumn: GeographyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Countries above 2M Sales' =
+			SWITCH(
+				TRUE,
+				ISBLANK('Region'[Country]),
+				"(Blank)",
+				'Region'[Country] IN {"United States",
+					"Australia"},
+				"Australia & United States",
+				"Other"
+			)
+		lineageTag: 196a3b2f-441c-4e87-8264-e8581105e00e
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "Region"
+				          }
+				        },
+				        "Property": "Country"
+				      }
+				    }
+				  ]
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"r","Entity":"Region"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"r"}},"Property":"Country"}}],"GroupItems":[{"DisplayName":"(Blank)","BlankDefaultPlaceholder":true},{"DisplayName":"Australia & United States","Expression":{"In":{"Expressions":[{"Column":{"Expression":{"SourceRef":{"Source":"r"}},"Property":"Country"}}],"Values":[[{"Literal":{"Value":"'United States'"}}],[{"Literal":{"Value":"'Australia'"}}]]}}},{"DisplayName":"Other"}]}
 
 		annotation SummarizationSetBy = Automatic
 

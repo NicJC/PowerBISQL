@@ -21,12 +21,14 @@ table OrderFacts
 
 	column OrderDate
 		dataType: dateTime
-		formatString: General Date
+		formatString: Long Date
 		lineageTag: 9ff96b66-88fe-42df-872c-8ca5439780af
 		summarizeBy: none
 		sourceColumn: OrderDate
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
 
 	column SalesOrderNumber
 		dataType: string
@@ -73,6 +75,8 @@ table OrderFacts
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+		annotation __PBI_SemanticLinks = [{"LinkTarget":{"TableName":"OrderFacts","TableItemName":"SalesAmount (bins)","ObjectType":4},"LinkType":"UsedInGroup"}]
+
 	column ResellerKey
 		dataType: int64
 		formatString: 0
@@ -100,14 +104,57 @@ table OrderFacts
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'SalesAmount (bins)' =
+			IF(
+				ISBLANK('OrderFacts'[SalesAmount]),
+				BLANK(),
+				IF(
+					'OrderFacts'[SalesAmount] >= 0,
+					ROUNDDOWN('OrderFacts'[SalesAmount] / 61.572284768211915, 0) * 61.572284768211915,
+					ROUNDUP('OrderFacts'[SalesAmount] / 61.572284768211915, 0) * 61.572284768211915
+				)
+			)
+		lineageTag: 82c9e18f-183d-4785-9034-e7f7fa02729b
+		summarizeBy: none
+
+		extendedProperty GroupingMetadata =
+				{
+				  "version": 0,
+				  "groupedColumns": [
+				    {
+				      "Column": {
+				        "Expression": {
+				          "SourceRef": {
+				            "Entity": "OrderFacts"
+				          }
+				        },
+				        "Property": "SalesAmount"
+				      }
+				    }
+				  ],
+				  "binningMetadata": {
+				    "binSize": {
+				      "value": 61.572284768211915,
+				      "unit": 0
+				    }
+				  }
+				}
+
+		annotation GroupingDesignState = {"Version":0,"Sources":[{"Name":"o","Entity":"OrderFacts"}],"GroupedColumns":[{"Column":{"Expression":{"SourceRef":{"Source":"o"}},"Property":"SalesAmount"}}],"BinItem":{"Expression":{"Floor":{"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"o"}},"Property":"SalesAmount"}},"Size":61.572284768211915}}}}
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition OrderFacts = m
 		mode: import
 		source =
 				let
 				  Source = Sql.Database(".\SQLEXPRESS", "AdventureWorksDW2025", [Query="SELECT#(lf)    cust.CustomerKey,#(lf)    cust.FirstName,#(lf)    cust.LastName,#(lf)    cust.EmailAddress,#(lf)    res.ResellerKey,#(lf)    res.ResellerName,#(lf)    geo.GeographyKey,#(lf)    geo.City,#(lf)    geo.StateProvinceName,#(lf)    geo.EnglishCountryRegionName,#(lf)    sales.ProductKey,#(lf)    sales.OrderDateKey,#(lf)    sales.OrderDate,#(lf)    sales.SalesOrderNumber,#(lf)    sales.SalesOrderLineNumber,#(lf)    sales.OrderQuantity,#(lf)    sales.UnitPrice,#(lf)    sales.SalesAmount,#(lf)    prod.EnglishProductName,#(lf)    prod.Color,#(lf)    #(lf)    prod.ModelName#(lf)#(lf)  FROM [AdventureWorksDW2025].[dbo].[FactResellerSales] sales#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimProduct] prod#(lf)#(lf)  ON prod.ProductKey = sales.ProductKey#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[FactInternetSales] fs#(lf)#(lf)  ON fs.ProductKey = sales.ProductKey#(lf)  #(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimCustomer] cust#(lf)#(lf)  ON cust.CustomerKey = fs.CustomerKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimGeography] geo#(lf)#(lf)  ON cust.GeographyKey = geo.GeographyKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimReseller] res#(lf)#(lf)  ON res.ResellerKey = sales.ResellerKey #(lf)  #(lf)  ;"]),
-				    #"Removed Other Columns" = Table.SelectColumns(Source,{"CustomerKey", "ResellerKey", "GeographyKey", "ProductKey", "OrderDateKey", "OrderDate", "SalesOrderNumber", "SalesOrderLineNumber", "OrderQuantity", "UnitPrice", "SalesAmount"})
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"CustomerKey", "ResellerKey", "GeographyKey", "ProductKey", "OrderDateKey", "OrderDate", "SalesOrderNumber", "SalesOrderLineNumber", "OrderQuantity", "UnitPrice", "SalesAmount"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Other Columns",{{"OrderDate", type date}})
 				in
-				    #"Removed Other Columns"
+				    #"Changed Type"
 
 	annotation PBI_NavigationStepName = Navigation
 

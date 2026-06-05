@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "9a7de973d9c056b8036e",
+  "displayName": "Bar Plot",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+}

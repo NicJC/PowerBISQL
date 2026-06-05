@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "26b9ed9f3c1da0960b65",
+  "position": {
+    "x": 139.79381443298968,
+    "y": 72.371134020618555,
+    "z": 0,
+    "height": 280.20618556701032,
+    "width": 280.20618556701032,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrderFacts"
+                    }
+                  },
+                  "Property": "OrderQuantity"
+                }
+              },
+              "queryRef": "OrderFacts.OrderQuantity",
+              "nativeQueryRef": "OrderQuantity",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "fc6db6ec61386ac6831a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "OrderFacts"
+              }
+            },
+            "Property": "OrderQuantity"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
