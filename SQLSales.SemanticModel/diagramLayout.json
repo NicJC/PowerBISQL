@@ -19,7 +19,7 @@
             "height": 253,
             "width": 234
           },
-          "zIndex": 4
+          "zIndex": 5
         },
         {
           "location": {
@@ -32,7 +32,7 @@
             "height": 200,
             "width": 234
           },
-          "zIndex": 2
+          "zIndex": 3
         },
         {
           "location": {
@@ -45,7 +45,7 @@
             "height": 245,
             "width": 234
           },
-          "zIndex": 3
+          "zIndex": 4
         },
         {
           "location": {
@@ -58,7 +58,7 @@
             "height": 424,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 6
         },
         {
           "location": {
@@ -71,7 +71,7 @@
             "height": 152,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 1
         },
         {
           "location": {
@@ -84,12 +84,12 @@
             "height": 200,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 7
         },
         {
           "location": {
-            "x": 1586,
-            "y": 339.75
+            "x": 2393,
+            "y": 35.75
           },
           "nodeIndex": "MeasureTbl",
           "nodeLineageTag": "1ace61a9-afa3-4cd0-93ac-2c4215a2e2e8",
@@ -97,7 +97,7 @@
             "height": 104,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 2
         }
       ],
       "name": "All tables",

@@ -35,11 +35,11 @@ table DimDate
 	column MonthNum
 		formatString: 0
 		lineageTag: 287651c6-ebac-4ccb-8f2f-c3493acc6844
-		summarizeBy: sum
+		summarizeBy: none
 		isNameInferred
 		sourceColumn: [MonthNum]
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column Quarter
 		lineageTag: ae1b8487-63a7-4349-a49a-8e23b2390cc0
@@ -60,11 +60,11 @@ table DimDate
 	column MonthSort
 		formatString: 0
 		lineageTag: 9d7d562f-50a4-4337-88de-a85fbdc1f878
-		summarizeBy: sum
+		summarizeBy: none
 		isNameInferred
 		sourceColumn: [MonthSort]
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	partition DimDate = calculated
 		mode: import

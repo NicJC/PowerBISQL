@@ -14,10 +14,10 @@ table OrderFacts
 		dataType: int64
 		formatString: 0
 		lineageTag: 49f479f0-1463-4209-b4ff-cd5123fc6b25
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: OrderDateKey
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column OrderDate
 		dataType: dateTime
@@ -40,19 +40,19 @@ table OrderFacts
 		dataType: int64
 		formatString: 0
 		lineageTag: dd6e4464-0d85-4473-9d65-c11e074fea88
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: SalesOrderLineNumber
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column OrderQuantity
 		dataType: int64
 		formatString: 0
 		lineageTag: 4ed99e8a-3d2a-4da0-a2ff-884f70846218
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: OrderQuantity
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column UnitPrice
 		dataType: double
@@ -66,10 +66,10 @@ table OrderFacts
 	column SalesAmount
 		dataType: double
 		lineageTag: 8952d43e-fdb2-4297-86a5-6c306a944988
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: SalesAmount
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -77,10 +77,10 @@ table OrderFacts
 		dataType: int64
 		formatString: 0
 		lineageTag: a8623832-5843-4e4f-8d37-ce7950df48ed
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: ResellerKey
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	column CustomerKey
 		dataType: int64

@@ -9,19 +9,19 @@ table Region
 
 		annotation SummarizationSetBy = Automatic
 
-	column StateProvinceName
+	column State
 		dataType: string
 		lineageTag: aac7a760-89c0-4146-bb99-7583b9edf78c
 		summarizeBy: none
-		sourceColumn: StateProvinceName
+		sourceColumn: State
 
 		annotation SummarizationSetBy = Automatic
 
-	column EnglishCountryRegionName
+	column Country
 		dataType: string
 		lineageTag: 317bbcf9-db7d-455b-811f-6f2f49b446e8
 		summarizeBy: none
-		sourceColumn: EnglishCountryRegionName
+		sourceColumn: Country
 
 		annotation SummarizationSetBy = Automatic
 
@@ -39,9 +39,10 @@ table Region
 		source =
 				let
 				  Source = Sql.Database(".\SQLEXPRESS", "AdventureWorksDW2025", [Query="SELECT#(lf)    #(lf)    geo.GeographyKey,#(lf)    geo.City,#(lf)    geo.StateProvinceName,#(lf)    geo.EnglishCountryRegionName#(lf)    #(lf)  FROM [AdventureWorksDW2025].[dbo].[FactResellerSales] sales#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimProduct] prod#(lf)#(lf)  ON prod.ProductKey = sales.ProductKey#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[FactInternetSales] fs#(lf)#(lf)  ON fs.ProductKey = sales.ProductKey#(lf)  #(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimCustomer] cust#(lf)#(lf)  ON cust.CustomerKey = fs.CustomerKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimGeography] geo#(lf)#(lf)  ON cust.GeographyKey = geo.GeographyKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimReseller] res#(lf)#(lf)  ON res.ResellerKey = sales.ResellerKey #(lf)  #(lf)  ;"]),
-				    Distinct = Table.Distinct(Source)
+				    Distinct = Table.Distinct(Source),
+				    #"Renamed Columns" = Table.RenameColumns(Distinct,{{"StateProvinceName", "State"}, {"EnglishCountryRegionName", "Country"}})
 				in
-				    Distinct
+				    #"Renamed Columns"
 
 	annotation PBI_NavigationStepName = Navigation
 

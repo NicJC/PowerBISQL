@@ -6,6 +6,32 @@ table MeasureTbl
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure MinQty = MIN(OrderFacts[OrderQuantity]) + 3
+		formatString: 0
+		lineageTag: 0ca97865-0dc8-4081-a670-701124bf7cac
+
+	measure OrderQuantity = values(OrderFacts[OrderQuantity])
+		formatString: 0
+		lineageTag: e67b7bf2-e86e-4570-94f5-1fb28edfb91c
+
+	measure Outliers = ```
+			
+			CALCULATE (   
+			           [OrderQuantity],
+			    FILTER (
+			        VALUES ( 'Product'[ProductName] ),
+			        COUNTROWS (
+			            FILTER (
+			                OrderFacts,
+			                [OrderQuantity] >= [MinQty]
+			            )
+			        ) > 0
+			    )
+			)
+			```
+		formatString: 0
+		lineageTag: 6873db5e-8001-4780-b5c6-08a06e0537ff
+
 	partition MeasureTbl = m
 		mode: import
 		source =

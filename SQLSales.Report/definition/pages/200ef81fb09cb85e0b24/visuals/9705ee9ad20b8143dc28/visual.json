@@ -121,20 +121,6 @@
         "type": "Advanced"
       },
       {
-        "name": "46be45d23701371e5ee2",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "MeasureTbl"
-              }
-            },
-            "Property": "Unit Price"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "298322d20adeba0e0e87",
         "field": {
           "Column": {
@@ -144,6 +130,20 @@
               }
             },
             "Property": "ProductKey"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7ebb651c95658569a300",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MeasureTbl"
+              }
+            },
+            "Property": "Unit Price"
           }
         },
         "type": "Advanced"

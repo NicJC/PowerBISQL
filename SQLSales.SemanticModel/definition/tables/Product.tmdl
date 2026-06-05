@@ -10,11 +10,11 @@ table Product
 
 		annotation SummarizationSetBy = Automatic
 
-	column EnglishProductName
+	column ProductName
 		dataType: string
 		lineageTag: a379165a-3b81-4f6b-b3d0-4eb392d58a0a
 		summarizeBy: none
-		sourceColumn: EnglishProductName
+		sourceColumn: ProductName
 
 		annotation SummarizationSetBy = Automatic
 
@@ -39,9 +39,10 @@ table Product
 		source =
 				let
 				  Source = Sql.Database(".\SQLEXPRESS", "AdventureWorksDW2025", [Query="SELECT#(lf)  #(lf)    prod.EnglishProductName,#(lf)    prod.Color,#(lf)    prod.ProductKey,#(lf)    prod.ModelName#(lf)#(lf)  FROM [AdventureWorksDW2025].[dbo].[FactResellerSales] sales#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimProduct] prod#(lf)#(lf)  ON prod.ProductKey = sales.ProductKey#(lf)#(lf)  JOIN [AdventureWorksDW2025].[dbo].[FactInternetSales] fs#(lf)#(lf)  ON fs.ProductKey = sales.ProductKey#(lf)  #(lf)  JOIN [AdventureWorksDW2025].[dbo].[DimCustomer] cust#(lf)#(lf)  ON cust.CustomerKey = fs.CustomerKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimGeography] geo#(lf)#(lf)  ON cust.GeographyKey = geo.GeographyKey#(lf)#(lf)  join [AdventureWorksDW2025].[dbo].[DimReseller] res#(lf)#(lf)  ON res.ResellerKey = sales.ResellerKey #(lf)  #(lf)  ;"]),
-				    Distinct = Table.Distinct(Source)
+				    Distinct = Table.Distinct(Source),
+				    #"Renamed Columns" = Table.RenameColumns(Distinct,{{"EnglishProductName", "ProductName"}})
 				in
-				    Distinct
+				    #"Renamed Columns"
 
 	annotation PBI_NavigationStepName = Navigation
 
