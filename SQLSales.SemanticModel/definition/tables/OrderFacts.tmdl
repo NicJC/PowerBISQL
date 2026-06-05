@@ -56,13 +56,12 @@ table OrderFacts
 
 	column UnitPrice
 		dataType: double
+		formatString: 0.00
 		lineageTag: 53ac0eb2-d9d7-451f-9ce4-cc9525c22f8b
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: UnitPrice
 
-		annotation SummarizationSetBy = Automatic
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+		annotation SummarizationSetBy = User
 
 	column SalesAmount
 		dataType: double

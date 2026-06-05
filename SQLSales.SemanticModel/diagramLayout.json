@@ -11,7 +11,7 @@
         {
           "location": {
             "x": 264,
-            "y": 516
+            "y": 534.75
           },
           "nodeIndex": "Customer",
           "nodeLineageTag": "61f7defb-2194-4c97-a5ac-a2d87696a855",
@@ -24,7 +24,7 @@
         {
           "location": {
             "x": 1286,
-            "y": 116
+            "y": 134.75
           },
           "nodeIndex": "Product",
           "nodeLineageTag": "8971329a-2c3a-4775-a31b-82bd697c1e6e",
@@ -37,7 +37,7 @@
         {
           "location": {
             "x": 286,
-            "y": 15
+            "y": 33.75
           },
           "nodeIndex": "Region",
           "nodeLineageTag": "0f5a99e4-125d-4c9b-a537-c1aedbdfb7a7",
@@ -50,7 +50,7 @@
         {
           "location": {
             "x": 932,
-            "y": 352
+            "y": 370.75
           },
           "nodeIndex": "OrderFacts",
           "nodeLineageTag": "ae9de9f8-3d8c-4421-93c7-6c32bb8a6a0e",
@@ -63,7 +63,7 @@
         {
           "location": {
             "x": 1566,
-            "y": 313
+            "y": 331.75
           },
           "nodeIndex": "Reseller",
           "nodeLineageTag": "6fc62a70-7cd4-4554-af4a-682eaf4b34b1",
@@ -76,12 +76,25 @@
         {
           "location": {
             "x": 828,
-            "y": 34
+            "y": 52.75
           },
           "nodeIndex": "DimDate",
           "nodeLineageTag": "cf729a45-f86e-416b-bd0a-e51e18460f09",
           "size": {
             "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1586,
+            "y": 339.75
+          },
+          "nodeIndex": "MeasureTbl",
+          "nodeLineageTag": "1ace61a9-afa3-4cd0-93ac-2c4215a2e2e8",
+          "size": {
+            "height": 104,
             "width": 234
           },
           "zIndex": 0

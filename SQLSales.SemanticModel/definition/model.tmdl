@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["Customer","Product","Region","Reseller","OrderFacts"]
+annotation PBI_QueryOrder = ["Customer","Product","Region","Reseller","OrderFacts","MeasureTbl"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -20,6 +20,7 @@ ref table OrderFacts
 ref table Reseller
 ref table DimDate
 ref table LocalDateTable_9f087059-6dd8-4d63-a3b8-32eeac271a66
+ref table MeasureTbl
 
 ref cultureInfo en-NZ
 

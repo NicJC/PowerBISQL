@@ -1,0 +1,153 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "9705ee9ad20b8143dc28",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 467.62886597938143,
+    "width": 872.16494845360819,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrderFacts"
+                    }
+                  },
+                  "Property": "ProductKey"
+                }
+              },
+              "queryRef": "OrderFacts.ProductKey",
+              "nativeQueryRef": "ProductKey"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "MeasureTbl"
+                    }
+                  },
+                  "Property": "Unit Price"
+                }
+              },
+              "queryRef": "MeasureTbl.Unit Price",
+              "nativeQueryRef": "Unit Price"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrderFacts"
+                    }
+                  },
+                  "Property": "SalesAmount"
+                }
+              },
+              "queryRef": "Sum(OrderFacts.SalesAmount)",
+              "nativeQueryRef": "SalesAmount",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "OrderFacts"
+                    }
+                  },
+                  "Property": "OrderQuantity"
+                }
+              },
+              "queryRef": "Sum(OrderFacts.OrderQuantity)",
+              "nativeQueryRef": "OrderQuantity"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "3ffc155f7373706d4b70",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "OrderFacts"
+              }
+            },
+            "Property": "SalesAmount"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b452da606007a0040027",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "OrderFacts"
+              }
+            },
+            "Property": "OrderQuantity"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "46be45d23701371e5ee2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "MeasureTbl"
+              }
+            },
+            "Property": "Unit Price"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "298322d20adeba0e0e87",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "OrderFacts"
+              }
+            },
+            "Property": "ProductKey"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
