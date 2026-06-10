@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "OrderFacts"
+                      "Entity": "Product"
                     }
                   },
-                  "Property": "ProductKey"
+                  "Property": "ProductName"
                 }
               },
-              "queryRef": "OrderFacts.ProductKey",
-              "nativeQueryRef": "ProductKey"
+              "queryRef": "Product.ProductName",
+              "nativeQueryRef": "ProductName"
             }
           ]
         },
@@ -88,6 +88,34 @@
         }
       }
     },
+    "objects": {
+      "bubbles": [
+        {
+          "properties": {
+            "bubbleSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "-9L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "markers": [
+        {
+          "properties": {
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
   },
   "filterConfig": {
@@ -121,20 +149,6 @@
         "type": "Advanced"
       },
       {
-        "name": "298322d20adeba0e0e87",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "OrderFacts"
-              }
-            },
-            "Property": "ProductKey"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "7ebb651c95658569a300",
         "field": {
           "Measure": {
@@ -147,6 +161,20 @@
           }
         },
         "type": "Advanced"
+      },
+      {
+        "name": "5eef2e8fe2c2ec23d4c9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Product"
+              }
+            },
+            "Property": "ProductName"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }

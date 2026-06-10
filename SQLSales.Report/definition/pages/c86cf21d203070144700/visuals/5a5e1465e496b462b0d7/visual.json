@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "e37b02786de7852acaad",
+  "name": "5a5e1465e496b462b0d7",
   "position": {
-    "x": 906.80412371134014,
-    "y": 84.123711340206185,
-    "z": 2,
-    "height": 319.17525773195877,
-    "width": 350.10309278350513,
-    "tabOrder": 2
+    "x": 1041.0309278350514,
+    "y": 21.649484536082475,
+    "z": 1,
+    "height": 516.49484536082468,
+    "width": 189.27835051546393,
+    "tabOrder": 1
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "OrderFacts"
+                      "Entity": "Product"
                     }
                   },
-                  "Property": "ProductKey"
+                  "Property": "ProductName"
                 }
               },
-              "queryRef": "OrderFacts.ProductKey",
-              "nativeQueryRef": "ProductKey",
+              "queryRef": "Product.ProductName",
+              "nativeQueryRef": "ProductName",
               "active": true
             }
           ]
@@ -51,20 +51,13 @@
       "general": [
         {
           "properties": {
-            "orientation": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
             "filter": {
               "filter": {
                 "Version": 2,
                 "From": [
                   {
-                    "Name": "o",
-                    "Entity": "OrderFacts",
+                    "Name": "p",
+                    "Entity": "Product",
                     "Type": 0
                   }
                 ],
@@ -77,10 +70,10 @@
                             "Column": {
                               "Expression": {
                                 "SourceRef": {
-                                  "Source": "o"
+                                  "Source": "p"
                                 }
                               },
-                              "Property": "ProductKey"
+                              "Property": "ProductName"
                             }
                           }
                         ],
@@ -88,21 +81,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "591L"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "594L"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "599L"
+                                "Value": "'Road-150 Red, 56'"
                               }
                             }
                           ]
@@ -122,18 +101,18 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "8dbc258049b917d6a049",
+        "name": "b9cf6c95500a236bed19",
         "field": {
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "OrderFacts"
+                "Entity": "Product"
               }
             },
-            "Property": "ProductKey"
+            "Property": "ProductName"
           }
         },
-        "type": "Advanced"
+        "type": "Categorical"
       }
     ]
   }

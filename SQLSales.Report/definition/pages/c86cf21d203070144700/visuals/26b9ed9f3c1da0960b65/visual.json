@@ -59,11 +59,11 @@
                       "Entity": "OrderFacts"
                     }
                   },
-                  "Property": "OrderQuantity"
+                  "Property": "SalesAmount"
                 }
               },
-              "queryRef": "OrderFacts.OrderQuantity",
-              "nativeQueryRef": "OrderQuantity",
+              "queryRef": "OrderFacts.SalesAmount",
+              "nativeQueryRef": "SalesAmount",
               "active": true
             }
           ]
@@ -78,11 +78,11 @@
                       "Entity": "OrderFacts"
                     }
                   },
-                  "Property": "SalesAmount"
+                  "Property": "OrderQuantity"
                 }
               },
-              "queryRef": "OrderFacts.SalesAmount",
-              "nativeQueryRef": "SalesAmount"
+              "queryRef": "OrderFacts.OrderQuantity",
+              "nativeQueryRef": "OrderQuantity"
             }
           ]
         }
@@ -134,34 +134,6 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "b334a34281478da893d5",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "OrderFacts"
-              }
-            },
-            "Property": "OrderQuantity"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "7c8413c07d37ce21c7b7",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "OrderFacts"
-              }
-            },
-            "Property": "SalesAmount"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "9e1d7c868a3d5d89a995",
         "field": {
           "Measure": {
@@ -204,6 +176,34 @@
             }
           ]
         }
+      },
+      {
+        "name": "fea82854c7bcb7e032b6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "OrderFacts"
+              }
+            },
+            "Property": "SalesAmount"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f87b297f7386668575e4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "OrderFacts"
+              }
+            },
+            "Property": "OrderQuantity"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

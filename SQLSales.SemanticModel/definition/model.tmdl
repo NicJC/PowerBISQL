@@ -22,5 +22,8 @@ ref table DimDate
 ref table LocalDateTable_9f087059-6dd8-4d63-a3b8-32eeac271a66
 ref table MeasureTbl
 
+ref role Full
+ref role User
+
 ref cultureInfo en-NZ
 

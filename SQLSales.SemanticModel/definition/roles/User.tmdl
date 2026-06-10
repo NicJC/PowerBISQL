@@ -1,0 +1,7 @@
+role User
+	modelPermission: read
+
+	tablePermission Region = [Country] == "France"
+
+	annotation PBI_Id = d2828acebfc9462d9fb266e7f75e1caa
+
